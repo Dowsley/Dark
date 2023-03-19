@@ -360,5 +360,5 @@ texture_filter = 1
 position = Vector2(9, -2)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_wqxhw")
-animation = &"jump"
+animation = &"idle"
 autoplay = "idle"
