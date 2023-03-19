@@ -348,7 +348,8 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_2o48t")
-jump_and_fall_transition_threshold = 20
+friction = 0.929
+jump_and_fall_transition_threshold = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.332, -0.173)
