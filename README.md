@@ -12,4 +12,6 @@ There, a Hero will rise.
 
 ## TODO
 - [X] Implement State Machines for Player
+- [ ] Add running
+- [ ] Add attacking
 - [ ] Adapt state machines as a generic abstract class
