@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://o4p7yryxl6qw" path="res://assets/DARK - Peaks Of Lightning/Bubble Maker Orb thing (8x20).png" id="8_tdhpu"]
 [ext_resource type="Texture2D" uid="uid://rnoce87jlcjo" path="res://assets/DARK - Peaks Of Lightning/5- Fog (5).png" id="9_y24y1"]
 [ext_resource type="Shader" path="res://src/levels/PeaksOfLightning.gdshader" id="10_105vy"]
-[ext_resource type="PackedScene" uid="uid://delsalv27faoi" path="res://src/entities/Player.tscn" id="10_jiwxh"]
+[ext_resource type="PackedScene" uid="uid://dv10g75tlkfkl" path="res://src/entities/Player.tscn" id="10_jiwxh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qokay"]
 atlas = ExtResource("3_xe5lq")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=48 format=3 uid="uid://delsalv27faoi"]
+[gd_scene load_steps=49 format=3 uid="uid://dv10g75tlkfkl"]
 
 [ext_resource type="Script" path="res://src/entities/Player.gd" id="1_2o48t"]
 [ext_resource type="Texture2D" uid="uid://cdhuh7c86q0bf" path="res://assets/The SwordMaster/Sword Master Sprite Sheet 90x37.png" id="2_1nu7f"]
+[ext_resource type="PackedScene" uid="uid://cpvtks517y7q3" path="res://src/entities/fsm/StateManager.tscn" id="3_7u6g6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_64yeu"]
 radius = 3.0
@@ -254,7 +255,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ib5jn")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump_trans",
 "speed": 10.0
 }, {
@@ -348,8 +349,6 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_2o48t")
-friction = 0.929
-jump_and_fall_transition_threshold = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.332, -0.173)
@@ -360,5 +359,7 @@ texture_filter = 1
 position = Vector2(9, -2)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_wqxhw")
-animation = &"idle"
+animation = &"walk"
 autoplay = "idle"
+
+[node name="StateManager" parent="." instance=ExtResource("3_7u6g6")]

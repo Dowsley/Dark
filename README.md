@@ -11,5 +11,5 @@ Still, there are some who believe the war is still going. Some believe there's d
 There, a Hero will rise.
 
 ## TODO
-- [ ] Implement State Machines for Player
+- [X] Implement State Machines for Player
 - [ ] Adapt state machines as a generic abstract class
