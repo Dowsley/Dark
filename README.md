@@ -12,6 +12,15 @@ There, a Hero will rise.
 
 ## TODO
 - [X] Implement State Machines for Player
-- [ ] Add running
+- [X] Add running
+- [X] Add dashes
+- [X] Adapt state machines as a generic abstract class and decouple individual states
+- [X] Less friction on jump run
+- [ ] Responsive jump
+- [ ] Add roll
 - [ ] Add attacking
-- [ ] Adapt state machines as a generic abstract class
+- [ ] Add more intricate movement (wall jump perhaps)
+- [ ] Add first level
+- [ ] Add a middleman Entity state machine then separate AI decision vs Player input
+- [ ] Add enemies
+- [ ] Make attacks deal damage and properly handle the state(s)

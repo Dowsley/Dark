@@ -1,12 +1,42 @@
-[gd_scene load_steps=49 format=3 uid="uid://dv10g75tlkfkl"]
+[gd_scene load_steps=61 format=3 uid="uid://b5686bl0jqigf"]
 
 [ext_resource type="Script" path="res://src/entities/Player.gd" id="1_2o48t"]
 [ext_resource type="Texture2D" uid="uid://cdhuh7c86q0bf" path="res://assets/The SwordMaster/Sword Master Sprite Sheet 90x37.png" id="2_1nu7f"]
-[ext_resource type="PackedScene" uid="uid://cpvtks517y7q3" path="res://src/entities/fsm/StateManager.tscn" id="3_7u6g6"]
+[ext_resource type="PackedScene" uid="uid://c3cs8ddklv1i2" path="res://src/entities/fsm/PlayerStateManager.tscn" id="3_h46af"]
+[ext_resource type="Script" path="res://src/entities/fsm/states/WalkState.gd" id="3_sp7vn"]
+[ext_resource type="Script" path="res://src/entities/fsm/states/RunState.gd" id="4_0rihi"]
+[ext_resource type="Script" path="res://src/entities/fsm/states/DashState.gd" id="5_wh1bf"]
+[ext_resource type="Script" path="res://src/entities/fsm/states/FallState.gd" id="6_0dldw"]
+[ext_resource type="Script" path="res://src/entities/fsm/states/JumpState.gd" id="7_wpo63"]
+[ext_resource type="Script" path="res://src/entities/fsm/states/IdleState.gd" id="9_txf3i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_64yeu"]
 radius = 3.0
 height = 11.534
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uupjk"]
+atlas = ExtResource("2_1nu7f")
+region = Rect2(0, 444, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1awah"]
+atlas = ExtResource("2_1nu7f")
+region = Rect2(90, 444, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4ibj"]
+atlas = ExtResource("2_1nu7f")
+region = Rect2(180, 444, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jthwi"]
+atlas = ExtResource("2_1nu7f")
+region = Rect2(270, 444, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7d12a"]
+atlas = ExtResource("2_1nu7f")
+region = Rect2(360, 444, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jmb2"]
+atlas = ExtResource("2_1nu7f")
+region = Rect2(450, 444, 90, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xqetp"]
 atlas = ExtResource("2_1nu7f")
@@ -184,6 +214,29 @@ region = Rect2(630, 74, 90, 37)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_uupjk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1awah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4ibj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jthwi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7d12a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jmb2")
+}],
+"loop": false,
+"name": &"dash",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_xqetp")
 }, {
 "duration": 1.0,
@@ -359,7 +412,62 @@ texture_filter = 1
 position = Vector2(9, -2)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_wqxhw")
-animation = &"walk"
+animation = &"idle"
 autoplay = "idle"
 
-[node name="StateManager" parent="." instance=ExtResource("3_7u6g6")]
+[node name="PlayerStateManager" parent="." instance=ExtResource("3_h46af")]
+starting_state = NodePath("IdleState")
+
+[node name="WalkState" type="Node" parent="PlayerStateManager"]
+script = ExtResource("3_sp7vn")
+jump_node = NodePath("../JumpState")
+fall_node = NodePath("../FallState")
+dash_node = NodePath("../DashState")
+idle_node = NodePath("../IdleState")
+walk_node = NodePath(".")
+run_node = NodePath("../RunState")
+animation_name = "walk"
+
+[node name="RunState" type="Node" parent="PlayerStateManager"]
+script = ExtResource("4_0rihi")
+jump_node = NodePath("../JumpState")
+fall_node = NodePath("../FallState")
+dash_node = NodePath("../DashState")
+idle_node = NodePath("../IdleState")
+walk_node = NodePath("../WalkState")
+run_node = NodePath(".")
+animation_name = "run"
+
+[node name="DashState" type="Node" parent="PlayerStateManager"]
+script = ExtResource("5_wh1bf")
+jump_node = NodePath("../JumpState")
+fall_node = NodePath("../FallState")
+dash_node = NodePath(".")
+idle_node = NodePath("../IdleState")
+walk_node = NodePath("../WalkState")
+run_node = NodePath("../RunState")
+animation_name = "dash"
+
+[node name="FallState" type="Node" parent="PlayerStateManager"]
+script = ExtResource("6_0dldw")
+run_node = NodePath("../RunState")
+walk_node = NodePath("../WalkState")
+idle_node = NodePath("../IdleState")
+animation_name = "fall"
+
+[node name="JumpState" type="Node" parent="PlayerStateManager"]
+script = ExtResource("7_wpo63")
+fall_node = NodePath("../FallState")
+run_node = NodePath("../RunState")
+walk_node = NodePath("../WalkState")
+idle_node = NodePath("../IdleState")
+animation_name = "jump"
+
+[node name="IdleState" type="Node" parent="PlayerStateManager"]
+script = ExtResource("9_txf3i")
+jump_node = NodePath("../JumpState")
+fall_node = NodePath("../FallState")
+walk_node = NodePath("../WalkState")
+run_node = NodePath("../RunState")
+dash_node = NodePath("../DashState")
+animation_name = "idle"

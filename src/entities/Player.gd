@@ -9,6 +9,7 @@ enum SPRITE_DIRS {
 
 @export var walk_speed := 20
 @export var run_speed := 50
+@export var dash_speed := 200
 @export var jump_force := 80
 @export var gravity := 2.5
 @export_range(0.0, 1.0) var friction := 0.1
@@ -16,7 +17,7 @@ enum SPRITE_DIRS {
 @export_range(0.0, 50) var jump_and_fall_transition_threshold := 20
 
 @onready var animations := $AnimatedSprite2D
-@onready var states := $StateManager
+@onready var states := $PlayerStateManager
 
 var curr_sprite_dir := SPRITE_DIRS.RIGHT
 
@@ -40,3 +41,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	states.physics_process(delta)
+
+func _process(delta: float) -> void:
+	states.process(delta)
