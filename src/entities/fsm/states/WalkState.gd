@@ -10,7 +10,7 @@ func input(event: InputEvent) -> BaseState:
 	if new_state:
 		return new_state
 	
-	if Input.is_action_just_pressed("run"):
-		return run_state
-
+	if Input.is_action_just_pressed("dash"):
+		return dash_state
+	
 	return null

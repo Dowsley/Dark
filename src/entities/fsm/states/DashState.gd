@@ -24,6 +24,13 @@ func input(event: InputEvent) -> BaseState:
 func get_movement_input() -> int:
 	return dash_direction
 
+func physics_process(delta: float) -> BaseState:
+	var new_state := super.physics_process(delta)
+	# Ignore fall state transition
+	if new_state and new_state != fall_state:
+		return new_state
+	return null
+
 # Track how long we've been dashing so we know when to exit
 func process(delta: float) -> BaseState:
 	current_dash_time -= delta
@@ -32,8 +39,6 @@ func process(delta: float) -> BaseState:
 		return null
 
 	if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
-		if Input.is_action_pressed("run"):
-			return run_state
 		return walk_state
 	return idle_state
 

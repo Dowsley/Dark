@@ -7,10 +7,9 @@ enum SPRITE_DIRS {
 	LEFT
 }
 
-@export var walk_speed := 20
-@export var run_speed := 50
+@export var walk_speed := 50
 @export var dash_speed := 200
-@export var jump_force := 80
+@export var jump_force := 70
 @export var gravity := 2.5
 @export_range(0.0, 1.0) var friction := 0.1
 @export_range(0.0 , 1.0) var acceleration := 0.25

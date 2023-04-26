@@ -1,10 +1,9 @@
-[gd_scene load_steps=61 format=3 uid="uid://b5686bl0jqigf"]
+[gd_scene load_steps=60 format=3 uid="uid://b5686bl0jqigf"]
 
 [ext_resource type="Script" path="res://src/entities/Player.gd" id="1_2o48t"]
 [ext_resource type="Texture2D" uid="uid://cdhuh7c86q0bf" path="res://assets/The SwordMaster/Sword Master Sprite Sheet 90x37.png" id="2_1nu7f"]
 [ext_resource type="PackedScene" uid="uid://c3cs8ddklv1i2" path="res://src/entities/fsm/PlayerStateManager.tscn" id="3_h46af"]
 [ext_resource type="Script" path="res://src/entities/fsm/states/WalkState.gd" id="3_sp7vn"]
-[ext_resource type="Script" path="res://src/entities/fsm/states/RunState.gd" id="4_0rihi"]
 [ext_resource type="Script" path="res://src/entities/fsm/states/DashState.gd" id="5_wh1bf"]
 [ext_resource type="Script" path="res://src/entities/fsm/states/FallState.gd" id="6_0dldw"]
 [ext_resource type="Script" path="res://src/entities/fsm/states/JumpState.gd" id="7_wpo63"]
@@ -396,7 +395,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_v8qta")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"walk_slow",
 "speed": 10.0
 }]
 
@@ -412,7 +411,7 @@ texture_filter = 1
 position = Vector2(9, -2)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_wqxhw")
-animation = &"idle"
+animation = &"run"
 autoplay = "idle"
 
 [node name="PlayerStateManager" parent="." instance=ExtResource("3_h46af")]
@@ -425,18 +424,7 @@ fall_node = NodePath("../FallState")
 dash_node = NodePath("../DashState")
 idle_node = NodePath("../IdleState")
 walk_node = NodePath(".")
-run_node = NodePath("../RunState")
-animation_name = "walk"
-
-[node name="RunState" type="Node" parent="PlayerStateManager"]
-script = ExtResource("4_0rihi")
-jump_node = NodePath("../JumpState")
-fall_node = NodePath("../FallState")
-dash_node = NodePath("../DashState")
-idle_node = NodePath("../IdleState")
-walk_node = NodePath("../WalkState")
-run_node = NodePath(".")
-animation_name = "run"
+animation_name = "run_fast"
 
 [node name="DashState" type="Node" parent="PlayerStateManager"]
 script = ExtResource("5_wh1bf")
@@ -445,12 +433,11 @@ fall_node = NodePath("../FallState")
 dash_node = NodePath(".")
 idle_node = NodePath("../IdleState")
 walk_node = NodePath("../WalkState")
-run_node = NodePath("../RunState")
 animation_name = "dash"
 
 [node name="FallState" type="Node" parent="PlayerStateManager"]
 script = ExtResource("6_0dldw")
-run_node = NodePath("../RunState")
+dash_node = NodePath("../DashState")
 walk_node = NodePath("../WalkState")
 idle_node = NodePath("../IdleState")
 animation_name = "fall"
@@ -458,7 +445,7 @@ animation_name = "fall"
 [node name="JumpState" type="Node" parent="PlayerStateManager"]
 script = ExtResource("7_wpo63")
 fall_node = NodePath("../FallState")
-run_node = NodePath("../RunState")
+dash_node = NodePath("../DashState")
 walk_node = NodePath("../WalkState")
 idle_node = NodePath("../IdleState")
 animation_name = "jump"
@@ -468,6 +455,5 @@ script = ExtResource("9_txf3i")
 jump_node = NodePath("../JumpState")
 fall_node = NodePath("../FallState")
 walk_node = NodePath("../WalkState")
-run_node = NodePath("../RunState")
 dash_node = NodePath("../DashState")
 animation_name = "idle"

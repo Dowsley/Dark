@@ -6,14 +6,12 @@ extends PlayerBaseState
 @export var dash_node: NodePath
 @export var idle_node: NodePath
 @export var walk_node: NodePath
-@export var run_node: NodePath
 
 @onready var jump_state: BaseState = get_node(jump_node)
 @onready var fall_state: BaseState = get_node(fall_node)
 @onready var idle_state: BaseState = get_node(idle_node)
 @onready var dash_state: BaseState = get_node(dash_node)
 @onready var walk_state: BaseState = get_node(walk_node)
-@onready var run_state: BaseState = get_node(run_node)
 
 func input(event: InputEvent) -> BaseState:
 	if Input.is_action_just_pressed("jump"):
@@ -25,25 +23,25 @@ func input(event: InputEvent) -> BaseState:
 	return null
 
 func physics_process(delta: float) -> BaseState:
-	if !player.is_on_floor():
-		return fall_state
-
-	var move = get_movement_input()
-	if move < 0:
+	var motion := get_movement_input()
+	if motion < 0:
 		player.set_sprite_dir(player.SPRITE_DIRS.LEFT)
-	elif move > 0:
+	elif motion > 0:
 		player.set_sprite_dir(player.SPRITE_DIRS.RIGHT)
 	
 	player.velocity.y += player.gravity
 	player.velocity.x = lerp(
 		float(player.velocity.x),
-		float(move * get_move_speed()),
-		float(player.acceleration if move else player.friction)
+		float(motion * get_move_speed()),
+		float(player.acceleration if motion else player.friction)
 	)
 	player.move_and_slide()
 	
-	if move == 0:
+	if motion == 0:
 		return idle_state
+
+	if !player.is_on_floor():
+		return fall_state
 
 	return null
 
