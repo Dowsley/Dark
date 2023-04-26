@@ -1,6 +1,4 @@
 # The Dark Series
-## Premise 1
-# Dark
 ## Premise (WIP)
 Just once, Humanity had first contact, and with it, came war. Wee were no match to their technology, almost indistinguishable from magic. Our only chance was to use their own weapons against them, augmenting ourselves, and turning the whole planet into a weapon, sacrificing our freedom to save us from annihilation.
 
