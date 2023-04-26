@@ -16,9 +16,10 @@ There, a Hero will rise.
 - [X] Add dashes
 - [X] Adapt state machines as a generic abstract class and decouple individual states
 - [X] Less friction on jump run
+- [X] Add roll
 - [ ] Responsive jump
 - [ ] Better jump arcs like in Dead Cells
-- [ ] Add roll
+- [ ] Delay management for abilities
 - [ ] Add attacking
 - [ ] Add more intricate movement (wall jump perhaps)
 - [ ] Add first level

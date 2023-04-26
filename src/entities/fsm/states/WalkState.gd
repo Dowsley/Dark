@@ -12,5 +12,8 @@ func input(event: InputEvent) -> BaseState:
 	
 	if Input.is_action_just_pressed("dash"):
 		return dash_state
+		
+	if Input.is_action_just_pressed("roll"):
+		return roll_state
 	
 	return null
