@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://b5686bl0jqigf"]
+[gd_scene load_steps=69 format=3 uid="uid://b5686bl0jqigf"]
 
 [ext_resource type="Script" path="res://src/entities/Player.gd" id="1_2o48t"]
 [ext_resource type="Texture2D" uid="uid://cdhuh7c86q0bf" path="res://assets/The SwordMaster/Sword Master Sprite Sheet 90x37.png" id="2_1nu7f"]
@@ -145,6 +145,54 @@ region = Rect2(540, 185, 90, 37)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1gh1q"]
 atlas = ExtResource("2_1nu7f")
 region = Rect2(630, 185, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1w4j"]
+atlas = ExtResource("2_1nu7f")
+region = Rect2(0, 259, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pc6cf"]
+atlas = ExtResource("2_1nu7f")
+region = Rect2(90, 259, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8p06"]
+atlas = ExtResource("2_1nu7f")
+region = Rect2(180, 259, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ocys"]
+atlas = ExtResource("2_1nu7f")
+region = Rect2(270, 259, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oni6g"]
+atlas = ExtResource("2_1nu7f")
+region = Rect2(360, 259, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yaf1i"]
+atlas = ExtResource("2_1nu7f")
+region = Rect2(450, 259, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70eta"]
+atlas = ExtResource("2_1nu7f")
+region = Rect2(540, 259, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yoj31"]
+atlas = ExtResource("2_1nu7f")
+region = Rect2(0, 296, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jsox"]
+atlas = ExtResource("2_1nu7f")
+region = Rect2(90, 296, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ukri"]
+atlas = ExtResource("2_1nu7f")
+region = Rect2(180, 296, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_toegg"]
+atlas = ExtResource("2_1nu7f")
+region = Rect2(270, 296, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aeot5"]
+atlas = ExtResource("2_1nu7f")
+region = Rect2(360, 296, 90, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ytpd1"]
 atlas = ExtResource("2_1nu7f")
@@ -311,6 +359,52 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_p1w4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pc6cf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8p06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ocys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oni6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yaf1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70eta")
+}],
+"loop": false,
+"name": &"slash1",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yoj31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jsox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ukri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_toegg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aeot5")
+}],
+"loop": false,
+"name": &"slash2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ytpd1")
 }, {
 "duration": 1.0,
@@ -339,6 +433,96 @@ animations = [{
 "speed": 13.0
 }]
 
+[sub_resource type="Animation" id="Animation_berno"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"slash1"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_hvuii"]
+resource_name = "slash2"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"slash2"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_v7jbb"]
+resource_name = "slash1"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"slash1"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ucmuo"]
+_data = {
+"RESET": SubResource("Animation_berno"),
+"slash1": SubResource("Animation_v7jbb"),
+"slash2": SubResource("Animation_hvuii")
+}
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_2o48t")
 
@@ -351,7 +535,7 @@ texture_filter = 1
 position = Vector2(9, -2)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_wqxhw")
-animation = &"roll"
+animation = &"slash1"
 autoplay = "idle"
 
 [node name="PlayerStateManager" parent="." instance=ExtResource("3_h46af")]
@@ -411,3 +595,8 @@ walk_node = NodePath("../WalkState")
 dash_node = NodePath("../DashState")
 roll_node = NodePath(".")
 animation_name = "roll"
+
+[node name="AttackAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ucmuo")
+}

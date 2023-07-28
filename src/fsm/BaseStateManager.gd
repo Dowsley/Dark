@@ -12,7 +12,7 @@ func change_state(new_state: BaseState) -> void:
 	current_state = new_state
 	current_state.enter()
 
-func init(node: Node) -> void:
+func init(_node: Node) -> void:
 	change_state(get_node(starting_state))
 	
 func physics_process(delta: float) -> void:

@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://o4p7yryxl6qw" path="res://assets/DARK - Peaks Of Lightning/Bubble Maker Orb thing (8x20).png" id="8_tdhpu"]
 [ext_resource type="Texture2D" uid="uid://rnoce87jlcjo" path="res://assets/DARK - Peaks Of Lightning/5- Fog (5).png" id="9_y24y1"]
 [ext_resource type="Shader" path="res://src/levels/PeaksOfLightning.gdshader" id="10_105vy"]
-[ext_resource type="PackedScene" uid="uid://dv10g75tlkfkl" path="res://src/entities/Player.tscn" id="10_jiwxh"]
+[ext_resource type="PackedScene" uid="uid://b5686bl0jqigf" path="res://src/entities/Player.tscn" id="10_jiwxh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qokay"]
 atlas = ExtResource("3_xe5lq")
@@ -560,6 +560,8 @@ shader_parameter/speed = 0.01
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="1-Background-Sky" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture_filter = 1
@@ -567,6 +569,8 @@ position = Vector2(288, 64)
 texture = ExtResource("1_mu1bl")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="2-background-Mountains" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 texture_filter = 1
@@ -581,6 +585,8 @@ wait_time = 3.0
 autostart = true
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="3-foreground-Mountains" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
 texture_filter = 1
@@ -605,6 +611,8 @@ autostart = true
 texture_filter = 1
 position = Vector2(288, 64)
 texture = ExtResource("7_wbhun")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="4-Ground"]
 
@@ -621,6 +629,7 @@ autoplay = "default"
 [node name="Player" parent="." instance=ExtResource("10_jiwxh")]
 position = Vector2(259, 91)
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="5-Fog" type="Sprite2D" parent="."]
 texture_filter = 1

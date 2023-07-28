@@ -16,11 +16,12 @@ enum SPRITE_DIRS {
 @export_range(0.0, 50) var jump_and_fall_transition_threshold := 20
 
 @onready var animations := $AnimatedSprite2D
+@onready var animations_attack := $AnimationPlayer
 @onready var states := $PlayerStateManager
 
 var curr_sprite_dir := SPRITE_DIRS.RIGHT
 
-func set_sprite_dir(new_dir: int) -> void:
+func set_sprite_dir(new_dir: SPRITE_DIRS) -> void:
 	if new_dir == curr_sprite_dir:
 		return
 	

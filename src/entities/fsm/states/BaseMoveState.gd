@@ -15,7 +15,7 @@ extends PlayerBaseState
 @onready var dash_state: BaseState = get_node(dash_node)
 @onready var roll_state: BaseState = get_node(roll_node)
 
-func input(event: InputEvent) -> BaseState:
+func input(_event: InputEvent) -> BaseState:
 	if Input.is_action_just_pressed("jump"):
 		return jump_state
 	
@@ -24,7 +24,7 @@ func input(event: InputEvent) -> BaseState:
 
 	return null
 
-func physics_process(delta: float) -> BaseState:
+func physics_process(_delta: float) -> BaseState:
 	var motion := get_movement_input()
 	if motion < 0:
 		player.set_sprite_dir(player.SPRITE_DIRS.LEFT)

@@ -12,7 +12,7 @@ extends PlayerBaseState
 @onready var dash_state: BaseState = get_node(dash_node)
 @onready var roll_state: BaseState = get_node(roll_node)
 
-func input(event: InputEvent) -> BaseState:
+func input(_event: InputEvent) -> BaseState:
 	if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
 		return walk_state
 	elif Input.is_action_just_pressed("jump"):
@@ -23,7 +23,7 @@ func input(event: InputEvent) -> BaseState:
 		return roll_state
 	return null
 
-func physics_process(delta: float) -> BaseState:
+func physics_process(_delta: float) -> BaseState:
 	player.velocity.y += player.gravity
 	player.velocity.x = lerp(
 		player.velocity.x, 0.0, player.friction)
