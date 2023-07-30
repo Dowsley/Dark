@@ -16,7 +16,7 @@ There, a Hero will rise.
 - [X] Adapt state machines as a generic abstract class and decouple individual states
 - [X] Less friction on jump run
 - [X] Add roll
-- [ ] Add initial attack states
+- [X] Add initial attack states
 - [ ] Add enemies
   - Add a middleman Entity state machine then separate AI decision vs Player input
 - [ ] Make attacks deal damage and properly handle the state(s)
@@ -41,7 +41,7 @@ There, a Hero will rise.
   - If tried to cancelled after the window, input will be buffered if its a roll
   - If cancelled, the combo order is kept the same as it was before the attack.
 - Character moves forward a little bit upon attacking. Intensified more by the type of weapon.
-- Screen shakes depending on size of weapon 
+- Screen shakes depending on size of weapon
 - Depending on the weapon, attacks stop the character midair till animation is finished
   - Smaller weapons like swords and arrow shooting keep the character in air
   - Big ass swords will cancel jump momentum and immediate start falling

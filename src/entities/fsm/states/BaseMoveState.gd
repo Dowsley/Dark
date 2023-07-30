@@ -7,6 +7,7 @@ extends PlayerBaseState
 @export var walk_node: NodePath
 @export var dash_node: NodePath
 @export var roll_node: NodePath
+@export var attack_node: NodePath
 
 @onready var jump_state: BaseState = get_node(jump_node)
 @onready var fall_state: BaseState = get_node(fall_node)
@@ -14,13 +15,15 @@ extends PlayerBaseState
 @onready var walk_state: BaseState = get_node(walk_node)
 @onready var dash_state: BaseState = get_node(dash_node)
 @onready var roll_state: BaseState = get_node(roll_node)
+@onready var attack_state: BaseState = get_node(attack_node)
 
 func input(_event: InputEvent) -> BaseState:
 	if Input.is_action_just_pressed("jump"):
 		return jump_state
-	
-	if Input.is_action_just_pressed("dash"):
+	elif Input.is_action_just_pressed("dash"):
 		return dash_state
+	elif Input.is_action_just_pressed('attack'):
+		return attack_state
 
 	return null
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://b5686bl0jqigf"]
+[gd_scene load_steps=76 format=3 uid="uid://b5686bl0jqigf"]
 
 [ext_resource type="Script" path="res://src/entities/Player.gd" id="1_2o48t"]
 [ext_resource type="Texture2D" uid="uid://cdhuh7c86q0bf" path="res://assets/The SwordMaster/Sword Master Sprite Sheet 90x37.png" id="2_1nu7f"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://src/entities/fsm/states/JumpState.gd" id="7_wpo63"]
 [ext_resource type="Script" path="res://src/entities/fsm/states/RollState.gd" id="9_qser1"]
 [ext_resource type="Script" path="res://src/entities/fsm/states/IdleState.gd" id="9_txf3i"]
+[ext_resource type="Script" path="res://src/entities/fsm/states/PlayerAttackState.gd" id="10_rx3k4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_64yeu"]
 radius = 3.0
@@ -145,6 +146,26 @@ region = Rect2(540, 185, 90, 37)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1gh1q"]
 atlas = ExtResource("2_1nu7f")
 region = Rect2(630, 185, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o85c1"]
+atlas = ExtResource("2_1nu7f")
+region = Rect2(0, 333, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nguji"]
+atlas = ExtResource("2_1nu7f")
+region = Rect2(90, 333, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kst5"]
+atlas = ExtResource("2_1nu7f")
+region = Rect2(180, 333, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_maj7e"]
+atlas = ExtResource("2_1nu7f")
+region = Rect2(270, 333, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyypp"]
+atlas = ExtResource("2_1nu7f")
+region = Rect2(360, 333, 90, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p1w4j"]
 atlas = ExtResource("2_1nu7f")
@@ -359,6 +380,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_o85c1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nguji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kst5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_maj7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyypp")
+}],
+"loop": false,
+"name": &"slam",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_p1w4j")
 }, {
 "duration": 1.0,
@@ -460,34 +501,6 @@ tracks/1/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_hvuii"]
-resource_name = "slash2"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"slash2"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4]
-}
-
 [sub_resource type="Animation" id="Animation_v7jbb"]
 resource_name = "slash1"
 length = 0.7
@@ -516,9 +529,66 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
 
+[sub_resource type="Animation" id="Animation_hvuii"]
+resource_name = "slash2"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"slash2"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_l7khh"]
+resource_name = "slam"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"slam"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 4]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ucmuo"]
 _data = {
 "RESET": SubResource("Animation_berno"),
+"slam": SubResource("Animation_l7khh"),
 "slash1": SubResource("Animation_v7jbb"),
 "slash2": SubResource("Animation_hvuii")
 }
@@ -549,6 +619,7 @@ idle_node = NodePath("../IdleState")
 walk_node = NodePath(".")
 dash_node = NodePath("../DashState")
 roll_node = NodePath("../RollState")
+attack_node = NodePath("../AttackState")
 animation_name = "walk"
 
 [node name="DashState" type="Node" parent="PlayerStateManager"]
@@ -559,6 +630,7 @@ idle_node = NodePath("../IdleState")
 walk_node = NodePath("../WalkState")
 dash_node = NodePath(".")
 roll_node = NodePath("../RollState")
+attack_node = NodePath("../AttackState")
 animation_name = "dash"
 
 [node name="FallState" type="Node" parent="PlayerStateManager"]
@@ -583,6 +655,7 @@ fall_node = NodePath("../FallState")
 walk_node = NodePath("../WalkState")
 dash_node = NodePath("../DashState")
 roll_node = NodePath("../RollState")
+attack_node = NodePath("../AttackState")
 animation_name = "idle"
 
 [node name="RollState" type="Node" parent="PlayerStateManager"]
@@ -594,9 +667,19 @@ idle_node = NodePath("../IdleState")
 walk_node = NodePath("../WalkState")
 dash_node = NodePath("../DashState")
 roll_node = NodePath(".")
+attack_node = NodePath("../AttackState")
 animation_name = "roll"
 
-[node name="AttackAnimation" type="AnimationPlayer" parent="."]
+[node name="AttackState" type="Node" parent="PlayerStateManager"]
+script = ExtResource("10_rx3k4")
+idle_node = NodePath("../IdleState")
+walk_node = NodePath("../WalkState")
+jump_node = NodePath("../JumpState")
+fall_node = NodePath("../FallState")
+dash_node = NodePath("../DashState")
+roll_node = NodePath("../RollState")
+
+[node name="AttackAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ucmuo")
 }
