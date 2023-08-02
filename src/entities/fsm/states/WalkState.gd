@@ -1,7 +1,7 @@
 extends BaseMoveState
 
 func get_move_speed() -> int:
-	return player.walk_speed
+	return entity.walk_speed
 
 func input(event: InputEvent) -> BaseState:
 	# First run parent code and make sure we don't need to exit early
@@ -10,10 +10,10 @@ func input(event: InputEvent) -> BaseState:
 	if new_state:
 		return new_state
 	
-	if Input.is_action_just_pressed("dash"):
+	if Input.is_action_just_pressed('dash'):
 		return dash_state
 		
-	if Input.is_action_just_pressed("roll"):
+	if Input.is_action_just_pressed('roll'):
 		return roll_state
 	
 	return null

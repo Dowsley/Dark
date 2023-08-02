@@ -1,5 +1,5 @@
 class_name BaseMoveAirState
-extends PlayerBaseState
+extends EntityBaseState
 
 @export var dash_node: NodePath
 @export var walk_node: NodePath
@@ -10,28 +10,28 @@ extends PlayerBaseState
 @onready var idle_state: BaseState = get_node(idle_node)
 
 func input(_event: InputEvent) -> BaseState:
-	if Input.is_action_just_pressed("dash"):
+	if Input.is_action_just_pressed('dash'):
 		return dash_state
 	return null
 
 func physics_process(_delta: float) -> BaseState:
 	var motion := 0
-	if Input.is_action_pressed("move_left"):
+	if Input.is_action_pressed('move_left'):
 		motion = -1
-		player.set_sprite_dir(player.SPRITE_DIRS.LEFT)
-	elif Input.is_action_pressed("move_right"):
+		entity.set_sprite_dir(entity.SPRITE_DIRS.LEFT)
+	elif Input.is_action_pressed('move_right'):
 		motion = 1
-		player.set_sprite_dir(player.SPRITE_DIRS.RIGHT)
+		entity.set_sprite_dir(entity.SPRITE_DIRS.RIGHT)
 	
-	player.velocity.y += player.gravity
-	player.velocity.x = lerp(
-		float(player.velocity.x),
-		float(motion * player.walk_speed),
-		float(player.acceleration if motion else player.friction)
+	entity.velocity.y += entity.gravity
+	entity.velocity.x = lerp(
+		float(entity.velocity.x),
+		float(motion * entity.walk_speed),
+		float(entity.acceleration if motion else entity.friction)
 	)
-	player.move_and_slide()
+	entity.move_and_slide()
 	
-	if player.is_on_floor():
+	if entity.is_on_floor():
 		if motion != 0:
 			return walk_state
 		else:

@@ -1,4 +1,4 @@
-class_name Player
+class_name Entity
 extends CharacterBody2D
 
 const SPRITE_DIST_TO_CENTER := 17
@@ -10,14 +10,14 @@ enum SPRITE_DIRS {
 @export var walk_speed := 50
 @export var dash_speed := 200
 @export var jump_force := 70
-@export var gravity := 2.5
+@export var gravity := Utils.GRAVITY
 @export_range(0.0, 1.0) var friction := 0.1
 @export_range(0.0 , 1.0) var acceleration := 0.25
 @export_range(0.0, 50) var jump_and_fall_transition_threshold := 20
 
-@onready var animations := $AnimatedSprite2D
-@onready var attack_animations := $AttackAnimationPlayer
-@onready var states := $PlayerStateManager
+@onready var states: BaseStateManager = $StateManager
+@onready var animations: AnimatedSprite2D = $AnimatedSprite2D
+@onready var attack_animations: AnimationPlayer = $AttackAnimationPlayer
 
 var curr_sprite_dir := SPRITE_DIRS.RIGHT
 
@@ -35,9 +35,6 @@ func set_sprite_dir(new_dir: SPRITE_DIRS) -> void:
 
 func _ready() -> void:
 	states.init(self)
-
-func _unhandled_input(event: InputEvent) -> void:
-	states.input(event)
 
 func _physics_process(delta: float) -> void:
 	states.physics_process(delta)

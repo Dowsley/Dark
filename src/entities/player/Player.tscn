@@ -1,9 +1,9 @@
-[gd_scene load_steps=76 format=3 uid="uid://b5686bl0jqigf"]
+[gd_scene load_steps=76 format=3 uid="uid://chkbkv020ta4b"]
 
-[ext_resource type="Script" path="res://src/entities/Player.gd" id="1_2o48t"]
+[ext_resource type="Script" path="res://src/entities/player/Player.gd" id="1_2o48t"]
 [ext_resource type="Texture2D" uid="uid://cdhuh7c86q0bf" path="res://assets/The SwordMaster/Sword Master Sprite Sheet 90x37.png" id="2_1nu7f"]
-[ext_resource type="PackedScene" uid="uid://c3cs8ddklv1i2" path="res://src/entities/fsm/PlayerStateManager.tscn" id="3_h46af"]
 [ext_resource type="Script" path="res://src/entities/fsm/states/WalkState.gd" id="3_sp7vn"]
+[ext_resource type="Script" path="res://src/entities/fsm/EntityStateManager.gd" id="3_ur7nc"]
 [ext_resource type="Script" path="res://src/entities/fsm/states/DashState.gd" id="5_wh1bf"]
 [ext_resource type="Script" path="res://src/entities/fsm/states/FallState.gd" id="6_0dldw"]
 [ext_resource type="Script" path="res://src/entities/fsm/states/JumpState.gd" id="7_wpo63"]
@@ -608,10 +608,16 @@ sprite_frames = SubResource("SpriteFrames_wqxhw")
 animation = &"slash1"
 autoplay = "idle"
 
-[node name="PlayerStateManager" parent="." instance=ExtResource("3_h46af")]
+[node name="AttackAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ucmuo")
+}
+
+[node name="StateManager" type="Node" parent="."]
+script = ExtResource("3_ur7nc")
 starting_state = NodePath("IdleState")
 
-[node name="WalkState" type="Node" parent="PlayerStateManager"]
+[node name="WalkState" type="Node" parent="StateManager"]
 script = ExtResource("3_sp7vn")
 jump_node = NodePath("../JumpState")
 fall_node = NodePath("../FallState")
@@ -622,7 +628,7 @@ roll_node = NodePath("../RollState")
 attack_node = NodePath("../AttackState")
 animation_name = "walk"
 
-[node name="DashState" type="Node" parent="PlayerStateManager"]
+[node name="DashState" type="Node" parent="StateManager"]
 script = ExtResource("5_wh1bf")
 jump_node = NodePath("../JumpState")
 fall_node = NodePath("../FallState")
@@ -633,14 +639,14 @@ roll_node = NodePath("../RollState")
 attack_node = NodePath("../AttackState")
 animation_name = "dash"
 
-[node name="FallState" type="Node" parent="PlayerStateManager"]
+[node name="FallState" type="Node" parent="StateManager"]
 script = ExtResource("6_0dldw")
 dash_node = NodePath("../DashState")
 walk_node = NodePath("../WalkState")
 idle_node = NodePath("../IdleState")
 animation_name = "fall"
 
-[node name="JumpState" type="Node" parent="PlayerStateManager"]
+[node name="JumpState" type="Node" parent="StateManager"]
 script = ExtResource("7_wpo63")
 fall_node = NodePath("../FallState")
 dash_node = NodePath("../DashState")
@@ -648,7 +654,7 @@ walk_node = NodePath("../WalkState")
 idle_node = NodePath("../IdleState")
 animation_name = "jump"
 
-[node name="IdleState" type="Node" parent="PlayerStateManager"]
+[node name="IdleState" type="Node" parent="StateManager"]
 script = ExtResource("9_txf3i")
 jump_node = NodePath("../JumpState")
 fall_node = NodePath("../FallState")
@@ -658,7 +664,7 @@ roll_node = NodePath("../RollState")
 attack_node = NodePath("../AttackState")
 animation_name = "idle"
 
-[node name="RollState" type="Node" parent="PlayerStateManager"]
+[node name="RollState" type="Node" parent="StateManager"]
 script = ExtResource("9_qser1")
 dash_time = 0.35
 jump_node = NodePath("../JumpState")
@@ -670,7 +676,7 @@ roll_node = NodePath(".")
 attack_node = NodePath("../AttackState")
 animation_name = "roll"
 
-[node name="AttackState" type="Node" parent="PlayerStateManager"]
+[node name="AttackState" type="Node" parent="StateManager"]
 script = ExtResource("10_rx3k4")
 idle_node = NodePath("../IdleState")
 walk_node = NodePath("../WalkState")
@@ -678,8 +684,3 @@ jump_node = NodePath("../JumpState")
 fall_node = NodePath("../FallState")
 dash_node = NodePath("../DashState")
 roll_node = NodePath("../RollState")
-
-[node name="AttackAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_ucmuo")
-}

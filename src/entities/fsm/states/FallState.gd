@@ -11,11 +11,11 @@ func physics_process(delta: float) -> BaseState:
 		return new_state
 	
 	var exit_transition = Utils.is_number_in_range(
-		player.velocity.y,
-		-player.jump_and_fall_transition_threshold,
-		player.jump_and_fall_transition_threshold
+		entity.velocity.y,
+		-entity.jump_and_fall_transition_threshold,
+		entity.jump_and_fall_transition_threshold
 	)
 	if exit_transition:
-		player.animations.play("fall")
+		entity.animations.play('fall')
 
 	return null

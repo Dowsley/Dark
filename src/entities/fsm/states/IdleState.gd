@@ -1,4 +1,4 @@
-extends PlayerBaseState
+extends EntityBaseState
 
 @export var jump_node: NodePath
 @export var fall_node: NodePath
@@ -15,24 +15,24 @@ extends PlayerBaseState
 @onready var attack_state: BaseState = get_node(attack_node)
 
 func input(_event: InputEvent) -> BaseState:
-	if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
+	if Input.is_action_pressed('move_left') or Input.is_action_pressed('move_right'):
 		return walk_state
-	elif Input.is_action_just_pressed("jump"):
+	elif Input.is_action_just_pressed('jump'):
 		return jump_state
-	elif Input.is_action_just_pressed("dash"):
+	elif Input.is_action_just_pressed('dash'):
 		return dash_state
-	elif Input.is_action_just_pressed("roll"):
+	elif Input.is_action_just_pressed('roll'):
 		return roll_state
 	elif Input.is_action_just_pressed('attack'):
 		return attack_state
 	return null
 
 func physics_process(_delta: float) -> BaseState:
-	player.velocity.y += player.gravity
-	player.velocity.x = lerp(
-		player.velocity.x, 0.0, player.friction)
-	player.move_and_slide()
+	entity.velocity.y += entity.gravity
+	entity.velocity.x = lerp(
+		entity.velocity.x, 0.0, entity.friction)
+	entity.move_and_slide()
 
-	if not player.is_on_floor():
+	if not entity.is_on_floor():
 		return fall_state
 	return null

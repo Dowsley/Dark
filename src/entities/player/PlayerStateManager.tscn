@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://brfno5hk7i6ww"]
+
+[ext_resource type="Script" path="res://src/entities/fsm/EntityStateManager.gd" id="1_x835w"]
+
+[node name="PlayerStateManager" type="Node"]
+script = ExtResource("1_x835w")

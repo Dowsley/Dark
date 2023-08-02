@@ -11,7 +11,7 @@ func enter() -> void:
 	
 	current_dash_time = dash_time
 	
-	if player.curr_sprite_dir == player.SPRITE_DIRS.LEFT:
+	if entity.curr_sprite_dir == entity.SPRITE_DIRS.LEFT:
 		dash_direction = -1
 	else:
 		dash_direction = 1
@@ -38,9 +38,9 @@ func process(delta: float) -> BaseState:
 	if current_dash_time > 0:
 		return null
 
-	if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
+	if Input.is_action_pressed('move_left') or Input.is_action_pressed('move_right'):
 		return walk_state
 	return idle_state
 
 func get_move_speed() -> int:
-	return player.dash_speed * 0.75
+	return entity.dash_speed * 0.75

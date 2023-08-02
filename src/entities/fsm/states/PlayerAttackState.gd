@@ -1,5 +1,5 @@
 class_name BaseAttackState
-extends PlayerBaseState
+extends EntityBaseState
 
 @export var idle_node: NodePath
 @export var walk_node: NodePath
@@ -29,7 +29,7 @@ var attack_buffered := false
 func enter() -> void:
 	curr_attack_index = 0
 	attack_buffered = false
-	player.attack_animations.play(attack_chain[curr_attack_index])
+	entity.attack_animations.play(attack_chain[curr_attack_index])
 
 func input(_event: InputEvent) -> BaseState:
 	# if Input.is_action_just_pressed('dash'):
@@ -44,7 +44,7 @@ func input(_event: InputEvent) -> BaseState:
 	return null
 
 func physics_process(_delta: float) -> BaseState:
-	if player.attack_animations.is_playing():
+	if entity.attack_animations.is_playing():
 		return null
 
 	if attack_buffered:
@@ -52,26 +52,26 @@ func physics_process(_delta: float) -> BaseState:
 		if not curr_attack_index >= attack_chain.size():
 			var motion := get_movement_input()
 			if motion < 0:
-				player.set_sprite_dir(player.SPRITE_DIRS.LEFT)
+				entity.set_sprite_dir(entity.SPRITE_DIRS.LEFT)
 			elif motion > 0:
-				player.set_sprite_dir(player.SPRITE_DIRS.RIGHT)
-			player.attack_animations.play(attack_chain[curr_attack_index])
+				entity.set_sprite_dir(entity.SPRITE_DIRS.RIGHT)
+			entity.attack_animations.play(attack_chain[curr_attack_index])
 			attack_buffered = false
 			return null
 	
 	if Input.is_action_pressed('move_left') or Input.is_action_pressed('move_right'):
 		return walk_state
 	
-	if not player.is_on_floor():
-		if player.velocity.y < 0:
+	if not entity.is_on_floor():
+		if entity.velocity.y < 0:
 			return jump_state
 		return fall_state
 	return idle_state
 
 # TODO find way to consolidate this repeated code.
 func get_movement_input() -> int:
-	if Input.is_action_pressed("move_left"):
+	if Input.is_action_pressed('move_left'):
 		return -1
-	elif Input.is_action_pressed("move_right"):
+	elif Input.is_action_pressed('move_right'):
 		return 1
 	return 0

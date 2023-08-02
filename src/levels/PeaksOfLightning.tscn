@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://dc0an2i7g0gxb"]
+[gd_scene load_steps=90 format=3]
 
 [ext_resource type="Texture2D" uid="uid://s4mi7ofav1qo" path="res://assets/DARK - Peaks Of Lightning/1- Background - Sky (1).png" id="1_mu1bl"]
 [ext_resource type="Texture2D" uid="uid://cltnsdxb4pa3s" path="res://assets/DARK - Peaks Of Lightning/2 -Background - Mountains (2).png" id="2_o5o1w"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://o4p7yryxl6qw" path="res://assets/DARK - Peaks Of Lightning/Bubble Maker Orb thing (8x20).png" id="8_tdhpu"]
 [ext_resource type="Texture2D" uid="uid://rnoce87jlcjo" path="res://assets/DARK - Peaks Of Lightning/5- Fog (5).png" id="9_y24y1"]
 [ext_resource type="Shader" path="res://src/levels/PeaksOfLightning.gdshader" id="10_105vy"]
-[ext_resource type="PackedScene" uid="uid://b5686bl0jqigf" path="res://src/entities/Player.tscn" id="10_jiwxh"]
+[ext_resource type="PackedScene" path="res://src/entities/player/Player.tscn" id="10_jiwxh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qokay"]
 atlas = ExtResource("3_xe5lq")

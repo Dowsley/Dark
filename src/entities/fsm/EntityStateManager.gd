@@ -1,10 +1,11 @@
+class_name EntityStateManager
 extends BaseStateManager
 
-var player: Player
+var entity: Player
 
 func init(node: Node) -> void:
 	for child in get_children():
-		child.player = node
+		child.entity = node
 	super.init(node)
 
 func physics_process(delta: float) -> void:
