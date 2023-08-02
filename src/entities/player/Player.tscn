@@ -684,3 +684,4 @@ jump_node = NodePath("../JumpState")
 fall_node = NodePath("../FallState")
 dash_node = NodePath("../DashState")
 roll_node = NodePath("../RollState")
+attack_chain = ["slash2", "slash1", "slam"]
