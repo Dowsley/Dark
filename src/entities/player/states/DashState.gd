@@ -17,7 +17,7 @@ func enter() -> void:
 		dash_direction = 1
 
 # Override MoveState input() since we don't want to change states based on player input
-func input(_event: InputEvent) -> BaseState:
+func input() -> BaseState:
 	return null
 
 # Move in the dash_direction every frame

@@ -7,9 +7,6 @@ func enter() -> void:
 func exit() -> void:
 	pass
 
-func input(_event: InputEvent) -> BaseState:
-	return null
-
 func process(_delta: float) -> BaseState:
 	return null
 

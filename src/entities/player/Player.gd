@@ -1,5 +1,5 @@
 class_name Player
 extends Entity
 
-func _unhandled_input(event: InputEvent) -> void:
-	states.input(event)
+func _unhandled_input(_event: InputEvent) -> void:
+	states.input()

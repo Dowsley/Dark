@@ -31,7 +31,7 @@ func enter() -> void:
 	attack_buffered = false
 	entity.attack_animations.play(attack_chain[curr_attack_index])
 
-func input(_event: InputEvent) -> BaseState:
+func input() -> BaseState:
 	# if Input.is_action_just_pressed('dash'):
 	# 	return dash_state
 	# if Input.is_action_just_pressed('roll'):

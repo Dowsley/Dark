@@ -5,5 +5,8 @@ extends BaseState
 
 var entity: Entity
 
+func input() -> BaseState:
+	return null
+
 func enter() -> void:
 	entity.animations.play(animation_name)

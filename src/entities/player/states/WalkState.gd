@@ -3,10 +3,10 @@ extends BaseMoveState
 func get_move_speed() -> int:
 	return entity.walk_speed
 
-func input(event: InputEvent) -> BaseState:
+func input() -> BaseState:
 	# First run parent code and make sure we don't need to exit early
 	# based on its logic
-	var new_state = super.input(event)
+	var new_state = super.input()
 	if new_state:
 		return new_state
 	

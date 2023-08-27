@@ -9,7 +9,7 @@ extends EntityBaseState
 @onready var walk_state: BaseState = get_node(walk_node)
 @onready var idle_state: BaseState = get_node(idle_node)
 
-func input(_event: InputEvent) -> BaseState:
+func input() -> BaseState:
 	if Input.is_action_just_pressed('dash'):
 		return dash_state
 	return null
