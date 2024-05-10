@@ -1,8 +1,8 @@
 # The Dark Series
 ## Premise (WIP)
-Just once, Humanity had first contact, and with it, came war. Wee were no match to their technology, almost indistinguishable from magic. Our only chance was to use their own weapons against them, augmenting ourselves, and turning the whole planet into a weapon, sacrificing our freedom to save us from annihilation.
+Just once, Humanity had first contact, and with it, came war. We were no match to their technology, almost indistinguishable from magic. Our only chance was to use their own weapons against them, augmenting ourselves, effectively turning the whole planet into a belligerent machine, sacrificing our freedom to save us from annihilation.
 
-They say the war lasted one week. Truth is, all we know from this time, is that no one ever won. Civilization was torn apart, with decentralized pockets of survivors left with a bleeding, war-torn home, filled with weapons from the past and the remnants of the invading forces crippled and unable to leave.
+They say the war lasted one week. Truth is, all we know from this time is that no one ever won. Civilization was torn apart, with decentralized pockets of survivors left with a bleeding, war-torn home, filled with weapons from the past and the remnants of the invading forces crippled and unable to leave.
 
 Still, there are some who believe the war is still going. Some believe there's deeper secret.
 
